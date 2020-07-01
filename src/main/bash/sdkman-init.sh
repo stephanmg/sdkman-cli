@@ -78,9 +78,14 @@ fi
 OLD_IFS="$IFS"
 IFS=$'\n'
 scripts=($(find "${SDKMAN_DIR}/src" "${SDKMAN_DIR}/ext" -type f -name 'sdkman-*'))
-for f in "${scripts[@]}"; do
+for f in "${SDKMAN_DIR}/src/sdkman-*"; do
 	source "$f"
 done
+
+for f in "${SDKMAN_DIR}/ext/sdkman-*"; do
+	source "$f"
+done
+
 IFS="$OLD_IFS"
 unset OLD_IFS scripts f
 
