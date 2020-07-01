@@ -77,8 +77,12 @@ fi
 # <https://github.com/sdkman/sdkman-extensions>.
 OLD_IFS="$IFS"
 IFS=$'\n'
-scripts=($(find "${SDKMAN_DIR}/src" "${SDKMAN_DIR}/ext" -type f -name 'sdkman-*'))
-for f in "${scripts[@]}"; do
+# scripts=($(find "${SDKMAN_DIR}/src" "${SDKMAN_DIR}/ext" -type f -name 'sdkman-*'))
+for f in "${SDKMAN_DIR}/src/sdkman-*"; do
+	source "$f"
+done
+
+for f in "${SDKMAN_DIR}/ext/sdkman-*"; do
 	source "$f"
 done
 IFS="$OLD_IFS"
